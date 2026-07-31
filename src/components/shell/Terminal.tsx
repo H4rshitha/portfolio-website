@@ -40,7 +40,7 @@ function runCommand(raw: string, cwd: string): { output: string[]; cwd?: string;
   if (lower === 'whoami') return { output: [`${profile.name.toLowerCase().replace(/\s+/g, '-')} (${profile.roles[0]})`] }
   if (lower === 'about') return { output: [profile.bio] }
   if (lower === 'pwd') return { output: [cwd] }
-  if (lower === 'ls') return { output: ['about.md  experience.json  education.json  projects/  skills.json  contact.tsx'] }
+  if (lower === 'ls') return { output: ['about.md  experience.json  projects/  skills.json  contact.tsx'] }
   if (lower === 'contact')
     return {
       output: [`email  ${profile.email}`, `phone  ${profile.phone}`, `github ${profile.github}`, `linkedin ${profile.linkedin}`],
