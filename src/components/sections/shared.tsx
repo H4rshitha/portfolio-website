@@ -21,6 +21,15 @@ export function SubHeading({ children }: { children: ReactNode }) {
   return <h2 className="mb-2 font-display text-base font-bold text-vscode-blue2">{children}</h2>
 }
 
+export function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="mb-4 flex items-center gap-3 font-display text-xs font-bold uppercase tracking-[0.15em] text-vscode-green">
+      {children}
+      <span className="h-px flex-1 bg-gradient-to-r from-vscode-green/40 to-transparent" />
+    </h2>
+  )
+}
+
 export function Tag({ children }: { children: ReactNode }) {
   return (
     <span className="rounded-sm border border-vscode-border bg-white/5 px-2 py-0.5 text-[11px] text-vscode-blue2">
