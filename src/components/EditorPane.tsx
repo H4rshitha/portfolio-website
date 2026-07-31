@@ -2,7 +2,6 @@ import { useWorkspace } from '../context/WorkspaceContext'
 import { Welcome } from './sections/Welcome'
 import { About } from './sections/About'
 import { Experience } from './sections/Experience'
-import { Education } from './sections/Education'
 import { Skills } from './sections/Skills'
 import { Achievements } from './sections/Achievements'
 import { Certifications } from './sections/Certifications'
@@ -27,7 +26,6 @@ export function EditorPane() {
     welcome: <Welcome />,
     about: <About />,
     experience: <Experience />,
-    education: <Education />,
     skills: <Skills />,
     achievements: <Achievements />,
     certifications: <Certifications />,

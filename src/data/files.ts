@@ -11,7 +11,6 @@ export const files: FileNode[] = [
   { id: 'welcome', label: 'welcome.md', ext: 'md' },
   { id: 'about', label: 'about.md', ext: 'md' },
   { id: 'experience', label: 'experience.json', ext: 'json' },
-  { id: 'education', label: 'education.json', ext: 'json' },
   { id: 'glofeagles', label: 'glofeagles.tsx', ext: 'tsx', group: 'projects' },
   { id: 'ntire-ripcurrent', label: 'ntire-ripcurrent.tsx', ext: 'tsx', group: 'projects' },
   { id: 'finascend', label: 'finascend.tsx', ext: 'tsx', group: 'projects' },
