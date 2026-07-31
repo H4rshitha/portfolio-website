@@ -7,7 +7,7 @@ const focusAreas: { icon: string; text: string }[] = [
   { icon: '🧠', text: 'Exploring RAG, LLM tooling, and GenAI-powered products' },
   { icon: '📈', text: 'ML pipelines — regression, clustering, and SHAP explainability' },
   { icon: '💬', text: 'Talk to me about PyTorch, computer vision, or full-stack React apps' },
-  { icon: '🚀', text: 'Always learning, always shipping' },
+  { icon: '🏆', text: 'Hackathon regular — SNUC Hacks’26 finalist with FinAscend' },
 ]
 
 export function About() {
@@ -16,20 +16,20 @@ export function About() {
       <Comment>{'/** about.md — a little more about me */'}</Comment>
       <Heading>About Me</Heading>
       <p className="-mt-4 mb-6 font-mono text-xs text-vscode-dim">
-        // who I am · what I do · where I build
+        // probably training a model, debugging a merge conflict, or both
       </p>
 
       <div className="mb-10 rounded-md border border-vscode-border bg-white/[0.02] p-6">
         <p className="text-sm leading-relaxed text-vscode-text sm:text-base">
-          Hi! I&apos;m <strong className="text-vscode-bright">{profile.name}</strong>, a B.Tech student
-          living at the crossroads of <strong className="text-vscode-blue2">computer vision</strong>,{' '}
-          <strong className="text-vscode-blue2">AI/ML</strong>, and{' '}
-          <strong className="text-vscode-blue2">full-stack engineering</strong>. I love turning research
-          ideas into systems that are genuinely{' '}
-          <strong className="text-vscode-accent">useful and deployed</strong>, not just notebooks that never
-          ship. Currently pursuing{' '}
-          <strong className="text-vscode-bright">{profile.roles[0]}</strong> work at Shiv Nadar University,
-          building deep learning pipelines and GenAI tools that solve problems people actually have.
+          I&apos;m <strong className="text-vscode-bright">{profile.name}</strong> — I teach models to spot
+          things before they become disasters:{' '}
+          <strong className="text-vscode-blue2">glacial lakes</strong> before they flood a valley,{' '}
+          <strong className="text-vscode-blue2">rip currents</strong> before they pull someone under (good
+          enough for a{' '}
+          <strong className="text-vscode-accent">Top 7 finish among 900+ teams</strong> at CVPR&apos;s NTIRE
+          2026 challenge). I&apos;m a B.Tech AI &amp; Data Science student at Shiv Nadar University, and I care
+          less about a model&apos;s leaderboard score than whether it ever leaves the notebook and ships as
+          something someone can actually click on.
         </p>
       </div>
 

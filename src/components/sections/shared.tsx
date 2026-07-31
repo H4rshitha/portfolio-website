@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 export function FileWrap({ children }: { children: ReactNode }) {
-  return <div className="mx-auto max-w-3xl px-5 py-8 sm:px-8 sm:py-10">{children}</div>
+  return <div className="max-w-3xl px-5 py-8 sm:px-8 sm:py-10">{children}</div>
 }
 
 export function Comment({ children }: { children: ReactNode }) {
@@ -11,7 +11,6 @@ export function Comment({ children }: { children: ReactNode }) {
 export function Heading({ children }: { children: ReactNode }) {
   return (
     <h1 className="mb-6 font-display text-2xl font-bold text-vscode-bright sm:text-3xl">
-      <span className="text-vscode-dim">## </span>
       {children}
     </h1>
   )

@@ -82,9 +82,9 @@ const rules: Rule[] = [
     respond: () => certifications.map((c) => `📜 ${c.name} — ${c.issuer} (${c.period})`).join('\n'),
   },
   {
-    keywords: ['contact', 'email', 'reach', 'hire', 'phone', 'linkedin', 'github'],
+    keywords: ['contact', 'email', 'reach', 'hire', 'linkedin', 'github'],
     respond: () =>
-      `You can reach Harshitha at ${profile.email} or ${profile.phone}. GitHub: ${profile.github} · LinkedIn: ${profile.linkedin}`,
+      `You can reach Harshitha at ${profile.email}. GitHub: ${profile.github} · LinkedIn: ${profile.linkedin}`,
   },
   {
     keywords: ['resume', 'cv', 'download'],

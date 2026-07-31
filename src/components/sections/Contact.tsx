@@ -50,8 +50,8 @@ export function Contact() {
         <a href={`mailto:${profile.email}`} className="flex items-center gap-2 text-vscode-blue2 hover:underline">
           ✉ {profile.email}
         </a>
-        <a href={`tel:${profile.phone}`} className="flex items-center gap-2 text-vscode-blue2 hover:underline">
-          ☎ {profile.phone}
+        <a href={profile.leetcode} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-vscode-blue2 hover:underline">
+          🧩 LeetCode ↗
         </a>
         <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-vscode-blue2 hover:underline">
           ⌥ GitHub ↗

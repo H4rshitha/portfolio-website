@@ -4,10 +4,10 @@ export interface Profile {
   tagline: string
   bio: string
   email: string
-  phone: string
   location: string
   linkedin: string
   github: string
+  leetcode: string
   resumeFile: string
 }
 
@@ -62,18 +62,18 @@ export interface CertificationItem {
 export const profile: Profile = {
   name: 'Harshitha Palaram',
   roles: [
-    'AI/ML Developer',
-    'Computer Vision Engineer',
-    'Full-Stack Developer',
-    'Data Science Student',
+    'AI/ML Engineer',
+    'Computer Vision Researcher',
+    'GenAI Builder',
+    'Full-Stack Engineer',
   ],
   tagline: 'Building systems that turn data into decisions',
   bio: "I'm a B.Tech student in Artificial Intelligence and Data Science at Shiv Nadar University, Chennai, building deep learning pipelines, computer vision systems, and full-stack applications. My recent work spans satellite-imagery segmentation for glacial lake outburst floods, rip-current detection for CVPR's NTIRE 2026 challenge, and GenAI-powered tools like a RAG study assistant and an AI-driven financial risk platform. I enjoy taking a project from a research idea to a working, deployed product.",
   email: 'harshithapalaram09@gmail.com',
-  phone: '8310419482',
   location: 'Chennai, India',
   linkedin: 'https://www.linkedin.com/in/harshitha-palaram-aa42a4348/',
   github: 'https://github.com/H4rshitha',
+  leetcode: 'https://leetcode.com/u/VVQfJJi5NW/',
   resumeFile: '/resume.pdf',
 }
 

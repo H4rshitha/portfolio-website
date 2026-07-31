@@ -43,7 +43,7 @@ function runCommand(raw: string, cwd: string): { output: string[]; cwd?: string;
   if (lower === 'ls') return { output: ['about.md  experience.json  projects/  skills.json  contact.tsx'] }
   if (lower === 'contact')
     return {
-      output: [`email  ${profile.email}`, `phone  ${profile.phone}`, `github ${profile.github}`, `linkedin ${profile.linkedin}`],
+      output: [`email    ${profile.email}`, `github   ${profile.github}`, `linkedin ${profile.linkedin}`, `leetcode ${profile.leetcode}`],
     }
   if (lower === 'skills') return { output: skills.map((s) => `${s.category.padEnd(20)} ${s.items.join(', ')}`) }
   if (lower === 'projects') return { output: projects.map((p) => `- ${p.name} (${p.period})`) }

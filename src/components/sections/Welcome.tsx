@@ -1,5 +1,5 @@
 import { profile } from '../../data/resume'
-import { useRotator } from '../../hooks/useRotator'
+import { useTypewriter } from '../../hooks/useTypewriter'
 import { useWorkspace } from '../../context/WorkspaceContext'
 import { FileWrap } from './shared'
 
@@ -21,7 +21,7 @@ const quickLinks: { id: string; label: string }[] = [
 ]
 
 export function Welcome() {
-  const role = useRotator(profile.roles, 2200)
+  const role = useTypewriter(profile.roles)
   const { openFile, setPaletteOpen } = useWorkspace()
 
   return (
@@ -35,10 +35,8 @@ export function Welcome() {
           {profile.name}
         </h1>
         <div className="mb-6 h-8 font-mono text-lg text-vscode-blue2 sm:text-xl">
-          <span key={role} className="animate-fade-in">
-            {role}
-            <span className="cursor-blink text-vscode-accent">▍</span>
-          </span>
+          {role}
+          <span className="cursor-blink text-vscode-accent">▍</span>
         </div>
         <p className="mb-8 max-w-xl text-sm leading-relaxed text-vscode-text sm:text-base">
           {profile.tagline}. B.Tech in Artificial Intelligence &amp; Data Science at Shiv Nadar University —
