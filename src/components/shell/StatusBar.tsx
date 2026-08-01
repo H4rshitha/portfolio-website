@@ -7,6 +7,12 @@ const langLabel: Record<string, string> = {
   json: 'JSON',
   tsx: 'TypeScript React',
   ts: 'TypeScript',
+  html: 'HTML',
+  js: 'JavaScript',
+  css: 'CSS',
+  pdf: 'PDF Document',
+  yml: 'YAML',
+  txt: 'Plain Text',
 }
 
 export function StatusBar() {

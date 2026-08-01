@@ -1,5 +1,6 @@
 import { useWorkspace } from '../../context/WorkspaceContext'
-import { getFile, extColor } from '../../data/files'
+import { getFile } from '../../data/files'
+import { FileIcon } from './FileIcons'
 
 export function TabBar() {
   const { openTabs, activeFile, setActiveFile, closeTab } = useWorkspace()
@@ -20,7 +21,7 @@ export function TabBar() {
                 : 'text-vscode-dim hover:bg-white/5 border-t-2 border-t-transparent'
             }`}
           >
-            <span className={extColor[file.ext]}>●</span>
+            <FileIcon ext={file.ext} />
             <span className="truncate">{file.label}</span>
             <button
               onClick={(e) => {

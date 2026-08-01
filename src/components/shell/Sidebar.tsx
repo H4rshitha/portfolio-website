@@ -1,18 +1,32 @@
 import { useState } from 'react'
 import { useWorkspace } from '../../context/WorkspaceContext'
-import { files, fileGroups, extColor } from '../../data/files'
+import { files, fileGroups, type FileExt } from '../../data/files'
+import { downloadResume } from '../../utils/downloadResume'
+import { FileIcon } from './FileIcons'
 
-function FileRow({ id, label, ext, indent = false }: { id: string; label: string; ext: keyof typeof extColor; indent?: boolean }) {
+function FileRow({
+  id,
+  label,
+  ext,
+  indent = false,
+  download = false,
+}: {
+  id: string
+  label: string
+  ext: FileExt
+  indent?: boolean
+  download?: boolean
+}) {
   const { activeFile, openFile } = useWorkspace()
-  const active = activeFile === id
+  const active = !download && activeFile === id
   return (
     <button
-      onClick={() => openFile(id)}
+      onClick={() => (download ? downloadResume() : openFile(id))}
       className={`flex w-full items-center gap-1.5 py-1 pr-2 text-left text-[13px] ${
         indent ? 'pl-8' : 'pl-4'
       } ${active ? 'bg-vscode-blue/15 text-vscode-bright' : 'text-vscode-text hover:bg-white/5'}`}
     >
-      <span className={extColor[ext]}>●</span>
+      <FileIcon ext={ext} />
       <span className="truncate">{label}</span>
     </button>
   )
@@ -52,7 +66,7 @@ export function Sidebar() {
           </div>
         ))}
         {rootFiles.map((f) => (
-          <FileRow key={f.id} id={f.id} label={f.label} ext={f.ext} />
+          <FileRow key={f.id} id={f.id} label={f.label} ext={f.ext} download={f.download} />
         ))}
       </div>
     </div>

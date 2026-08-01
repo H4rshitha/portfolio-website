@@ -1,23 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useWorkspace } from '../../context/WorkspaceContext'
-import { files, extColor } from '../../data/files'
-import { profile } from '../../data/resume'
+import { files, type FileExt } from '../../data/files'
+import { downloadResume } from '../../utils/downloadResume'
+import { FileIcon } from './FileIcons'
 
 interface PaletteEntry {
   id: string
   label: string
   hint: string
-  icon: string
+  ext?: FileExt
+  icon?: string
   run: () => void
-}
-
-function downloadResume() {
-  const a = document.createElement('a')
-  a.href = profile.resumeFile
-  a.download = 'Harshitha_Palaram_Resume.pdf'
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
 }
 
 export function CommandPalette() {
@@ -47,9 +40,9 @@ export function CommandPalette() {
     const fileEntries: PaletteEntry[] = files.map((f) => ({
       id: `file-${f.id}`,
       label: f.label,
-      hint: f.group ? `projects/${f.label}` : 'go to file',
-      icon: '●',
-      run: () => openFile(f.id),
+      hint: f.download ? 'download' : f.group ? `projects/${f.label}` : 'go to file',
+      ext: f.ext,
+      run: f.download ? downloadResume : () => openFile(f.id),
     }))
     const commandEntries: PaletteEntry[] = [
       { id: 'cmd-sidebar', label: 'View: Toggle Sidebar', hint: 'Ctrl+B', icon: '⚙', run: toggleSidebar },
@@ -57,7 +50,6 @@ export function CommandPalette() {
       { id: 'cmd-copilot', label: "View: Toggle Copilot", hint: 'Ctrl+Shift+C', icon: '⚙', run: toggleCopilot },
       { id: 'cmd-shortcuts', label: 'Help: Keyboard Shortcuts', hint: '?', icon: '⚙', run: () => setShortcutsOpen(true) },
       { id: 'cmd-dino', label: 'Run: Start Debugging (play dino)', hint: 'F5', icon: '▶', run: () => setDinoOpen(true) },
-      { id: 'cmd-resume', label: 'File: Download Resume PDF', hint: '⬇', icon: '⚙', run: downloadResume },
     ]
     return [...commandEntries, ...fileEntries]
   }, [openFile, toggleSidebar, toggleTerminal, toggleCopilot, setShortcutsOpen, setDinoOpen])
@@ -122,9 +114,11 @@ export function CommandPalette() {
                 i === selected ? 'bg-vscode-blue text-white' : 'text-vscode-text'
               }`}
             >
-              <span className={entry.id.startsWith('file-') ? extColor[files.find((f) => f.id === entry.id.slice(5))?.ext || 'md'] : 'text-vscode-blue2'}>
-                {entry.icon}
-              </span>
+              {entry.ext ? (
+                <FileIcon ext={entry.ext} />
+              ) : (
+                <span className="inline-flex w-6 shrink-0 justify-center text-vscode-blue2">{entry.icon}</span>
+              )}
               <span className="truncate">{entry.label}</span>
               <span className={`ml-auto text-[11px] ${i === selected ? 'text-white/70' : 'text-vscode-dim'}`}>
                 {entry.hint}
