@@ -1,17 +1,8 @@
 import { useState } from 'react'
 import { useWorkspace } from '../../context/WorkspaceContext'
 import { useTheme } from '../../themes/ThemeContext'
-import { profile } from '../../data/resume'
+import { downloadResume } from '../../utils/downloadResume'
 import { Dropdown, type MenuItem } from './Dropdown'
-
-function downloadResume() {
-  const a = document.createElement('a')
-  a.href = profile.resumeFile
-  a.download = 'Harshitha_Palaram_Resume.pdf'
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-}
 
 export function MenuBar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)

@@ -1,16 +1,8 @@
 import { profile } from '../../data/resume'
 import { useTypewriter } from '../../hooks/useTypewriter'
 import { useWorkspace } from '../../context/WorkspaceContext'
+import { downloadResume } from '../../utils/downloadResume'
 import { FileWrap } from './shared'
-
-function downloadResume() {
-  const a = document.createElement('a')
-  a.href = profile.resumeFile
-  a.download = 'Harshitha_Palaram_Resume.pdf'
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-}
 
 const quickLinks: { id: string; label: string }[] = [
   { id: 'about', label: 'about.md' },
