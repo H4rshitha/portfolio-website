@@ -26,7 +26,7 @@ export function About() {
           <strong className="text-vscode-blue2">glacial lakes</strong> before they flood a valley,{' '}
           <strong className="text-vscode-blue2">rip currents</strong> before they pull someone under (good
           enough for a{' '}
-          <strong className="text-vscode-accent">Top 7 finish among 900+ teams</strong> at CVPR&apos;s NTIRE
+          <strong className="text-vscode-accent">Top 7 finish among 900+ submissions</strong> at CVPR&apos;s NTIRE
           2026 challenge). I&apos;m a B.Tech AI &amp; Data Science student at Shiv Nadar University, and I care
           less about a model&apos;s leaderboard score than whether it ever leaves the notebook and ships as
           something someone can actually click on.

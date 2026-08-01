@@ -25,6 +25,7 @@ export interface ExperienceItem {
   location: string
   period: string
   bullets: string[]
+  certificate?: string
 }
 
 export interface ProjectItem {
@@ -64,7 +65,6 @@ export const profile: Profile = {
   roles: [
     'AI/ML Engineer',
     'Computer Vision Researcher',
-    'GenAI Builder',
     'Full-Stack Engineer',
   ],
   tagline: 'Building systems that turn data into decisions',
@@ -111,6 +111,7 @@ export const experience: ExperienceItem[] = [
       'Engineered and evaluated end-to-end machine learning pipelines for restaurant rating prediction, recommendation systems, cuisine classification, and location analytics using Python, Pandas, NumPy, Scikit-learn, TF-IDF, and cosine similarity.',
       'Optimized regression models using Random Forest, XGBoost, and CatBoost, achieving 95.35% R² with 0.33 RMSE; leveraged DBSCAN clustering and SHAP explainability to extract actionable insights and improve model interpretability.',
     ],
+    certificate: 'https://drive.google.com/file/d/19Jnc3It1br9hTEznDRrb0r6Wg85VJ9hN/view?usp=sharing',
   },
 ]
 

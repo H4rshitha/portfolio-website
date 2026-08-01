@@ -1,5 +1,5 @@
 import { experience } from '../../data/resume'
-import { Card, Comment, FileWrap, Heading } from './shared'
+import { Card, Comment, ExternalLink, FileWrap, Heading } from './shared'
 
 export function Experience() {
   return (
@@ -20,6 +20,11 @@ export function Experience() {
               <li key={i}>{b}</li>
             ))}
           </ul>
+          {e.certificate && (
+            <div className="mt-3 text-sm">
+              <ExternalLink href={e.certificate}>View certificate</ExternalLink>
+            </div>
+          )}
         </Card>
       ))}
     </FileWrap>
