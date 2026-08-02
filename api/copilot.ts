@@ -9,7 +9,7 @@ import {
   skills,
 } from '../src/data/resume.js'
 
-export const config = { runtime: 'edge' }
+export const config = { maxDuration: 60 }
 
 const MAX_MESSAGES = 20
 const MAX_MESSAGE_LENGTH = 2000
@@ -67,11 +67,7 @@ interface IncomingMessage {
   content: string
 }
 
-export default async function handler(req: Request): Promise<Response> {
-  if (req.method !== 'POST') {
-    return json({ error: 'Method not allowed' }, 405)
-  }
-
+export async function POST(req: Request): Promise<Response> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) {
     return json({ error: 'Server is missing GEMINI_API_KEY' }, 500)
