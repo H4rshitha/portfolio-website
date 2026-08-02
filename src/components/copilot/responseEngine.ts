@@ -43,7 +43,7 @@ const rules: Rule[] = [
     },
   },
   {
-    keywords: ['learn-lynx', 'learn lynx', 'rag', 'study'],
+    keywords: ['learn-lynx', 'learn lynx', 'rag', 'study assistant', 'study partner'],
     respond: () => {
       const p = projects.find((p) => p.slug === 'learn-lynx')!
       return `${p.name}: ${p.bullets.join(' ')}`
@@ -69,7 +69,7 @@ const rules: Rule[] = [
         .join('\n\n'),
   },
   {
-    keywords: ['education', 'degree', 'university', 'college', 'cgpa', 'school'],
+    keywords: ['education', 'degree', 'university', 'college', 'cgpa', 'school', 'study', 'studying', 'gpa'],
     respond: () =>
       education.map((e) => `${e.school} — ${e.degree} (${e.period}), ${e.score}`).join('\n'),
   },

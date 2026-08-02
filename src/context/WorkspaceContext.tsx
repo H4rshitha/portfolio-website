@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from 'react'
 
+export type SidebarView = 'explorer' | 'sourceControl'
+
 interface WorkspaceContextValue {
   openTabs: string[]
   activeFile: string
@@ -19,6 +21,9 @@ interface WorkspaceContextValue {
 
   sidebarOpen: boolean
   toggleSidebar: () => void
+
+  sidebarView: SidebarView
+  selectSidebarView: (view: SidebarView) => void
 
   terminalOpen: boolean
   toggleTerminal: () => void
@@ -57,6 +62,7 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
   const [activeFile, setActiveFileState] = useState('welcome')
 
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile)
+  const [sidebarView, setSidebarView] = useState<SidebarView>('explorer')
   const [terminalOpen, setTerminalOpen] = useState(false)
   const [copilotOpen, setCopilotOpen] = useState(false)
   const [paletteOpen, setPaletteOpen] = useState(false)
@@ -94,6 +100,18 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
   )
 
   const toggleSidebar = useCallback(() => setSidebarOpen((v) => !v), [])
+
+  const selectSidebarView = useCallback(
+    (view: SidebarView) => {
+      if (sidebarOpen && sidebarView === view) {
+        setSidebarOpen(false)
+      } else {
+        setSidebarView(view)
+        setSidebarOpen(true)
+      }
+    },
+    [sidebarOpen, sidebarView],
+  )
   const toggleTerminal = useCallback(() => setTerminalOpen((v) => !v), [])
   const toggleCopilot = useCallback(() => setCopilotOpen((v) => !v), [])
 
@@ -117,6 +135,8 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
       isMobile,
       sidebarOpen,
       toggleSidebar,
+      sidebarView,
+      selectSidebarView,
       terminalOpen,
       toggleTerminal,
       copilotOpen,
@@ -139,6 +159,8 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
       isMobile,
       sidebarOpen,
       toggleSidebar,
+      sidebarView,
+      selectSidebarView,
       terminalOpen,
       toggleTerminal,
       copilotOpen,

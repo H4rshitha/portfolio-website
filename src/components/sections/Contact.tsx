@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { profile } from '../../data/resume'
 import { Comment, FileWrap, Heading, SubHeading } from './shared'
+import { GitHubIcon, LeetCodeIcon, LinkedInIcon, MailIcon } from '../shell/SocialIcons'
 
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID as string | undefined
 
@@ -40,7 +41,7 @@ export function Contact() {
 
   return (
     <FileWrap>
-      <Comment>{'// contact.tsx'}</Comment>
+      <Comment>{'/* contact.css */'}</Comment>
       <Heading>Contact</Heading>
       <p className="mb-6 text-sm leading-relaxed text-vscode-text">
         Have a project, an opportunity, or just want to talk AI/ML? My inbox is open.
@@ -48,16 +49,16 @@ export function Contact() {
 
       <div className="mb-8 grid grid-cols-1 gap-3 font-mono text-sm sm:grid-cols-2">
         <a href={`mailto:${profile.email}`} className="flex items-center gap-2 text-vscode-blue2 hover:underline">
-          ✉ {profile.email}
+          <MailIcon className="h-4 w-4 shrink-0" /> {profile.email}
         </a>
         <a href={profile.leetcode} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-vscode-blue2 hover:underline">
-          🧩 LeetCode ↗
+          <LeetCodeIcon className="h-4 w-4 shrink-0" /> LeetCode ↗
         </a>
         <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-vscode-blue2 hover:underline">
-          ⌥ GitHub ↗
+          <GitHubIcon className="h-4 w-4 shrink-0" /> GitHub ↗
         </a>
         <a href={profile.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-vscode-blue2 hover:underline">
-          in LinkedIn ↗
+          <LinkedInIcon className="h-4 w-4 shrink-0" /> LinkedIn ↗
         </a>
       </div>
 

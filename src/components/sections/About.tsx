@@ -1,5 +1,5 @@
 import { education, profile } from '../../data/resume'
-import { Comment, FileWrap, Heading, SectionLabel } from './shared'
+import { Comment, FileWrap, Heading, SectionLabel, hoverCard } from './shared'
 
 const focusAreas: { icon: string; text: string }[] = [
   { icon: '🛰️', text: 'Deep learning pipelines for satellite imagery & glacial flood detection' },
@@ -13,7 +13,7 @@ const focusAreas: { icon: string; text: string }[] = [
 export function About() {
   return (
     <FileWrap>
-      <Comment>{'/** about.md — a little more about me */'}</Comment>
+      <Comment>{'<!-- about.html — a little more about me -->'}</Comment>
       <Heading>About Me</Heading>
       <p className="-mt-4 mb-6 font-mono text-xs text-vscode-dim">
         // probably training a model, debugging a merge conflict, or both
@@ -38,7 +38,7 @@ export function About() {
         {focusAreas.map((f) => (
           <div
             key={f.text}
-            className="flex items-start gap-3 rounded-md border border-vscode-border bg-white/[0.02] p-4 transition-colors hover:border-white/20"
+            className={`flex items-start gap-3 rounded-md border border-vscode-border bg-white/[0.02] p-4 ${hoverCard}`}
           >
             <span className="text-xl leading-none">{f.icon}</span>
             <span className="text-sm leading-snug text-vscode-text">{f.text}</span>
@@ -51,7 +51,7 @@ export function About() {
         {education.map((e) => (
           <div
             key={e.school}
-            className="rounded-md border border-vscode-border bg-white/[0.02] p-5 transition-colors hover:border-white/20"
+            className={`rounded-md border border-vscode-border bg-white/[0.02] p-5 ${hoverCard}`}
           >
             <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
               <div className="flex items-center gap-2">

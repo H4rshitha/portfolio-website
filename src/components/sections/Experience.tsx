@@ -4,7 +4,7 @@ import { Card, Comment, ExternalLink, FileWrap, Heading } from './shared'
 export function Experience() {
   return (
     <FileWrap>
-      <Comment>{'// experience.json'}</Comment>
+      <Comment>{'// experience.ts'}</Comment>
       <Heading>Experience</Heading>
       {experience.map((e) => (
         <Card key={e.title + e.company}>

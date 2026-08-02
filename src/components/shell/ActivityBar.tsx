@@ -36,8 +36,16 @@ function ActivityIcon({
 }
 
 export function ActivityBar() {
-  const { sidebarOpen, toggleSidebar, copilotOpen, toggleCopilot, toggleTerminal, setPaletteOpen, setShortcutsOpen, isMobile } =
-    useWorkspace()
+  const {
+    sidebarOpen,
+    sidebarView,
+    selectSidebarView,
+    copilotOpen,
+    toggleCopilot,
+    setPaletteOpen,
+    setShortcutsOpen,
+    isMobile,
+  } = useWorkspace()
   const { themes, themeId, setThemeId } = useTheme()
 
   if (isMobile) return null
@@ -50,13 +58,21 @@ export function ActivityBar() {
   return (
     <div className="no-select flex w-12 shrink-0 flex-col items-center justify-between border-r border-vscode-border bg-vscode-bg4 py-1">
       <div className="flex flex-col items-center">
-        <ActivityIcon label="Explorer (Ctrl+B)" active={sidebarOpen} onClick={toggleSidebar}>
+        <ActivityIcon
+          label="Explorer (Ctrl+B)"
+          active={sidebarOpen && sidebarView === 'explorer'}
+          onClick={() => selectSidebarView('explorer')}
+        >
           <ExplorerIcon className="h-5 w-5" />
         </ActivityIcon>
         <ActivityIcon label="Search (Ctrl+P)" onClick={() => setPaletteOpen(true)}>
           <SearchIcon className="h-5 w-5" />
         </ActivityIcon>
-        <ActivityIcon label="Source Control · Terminal (Ctrl+`)" onClick={toggleTerminal}>
+        <ActivityIcon
+          label="Source Control"
+          active={sidebarOpen && sidebarView === 'sourceControl'}
+          onClick={() => selectSidebarView('sourceControl')}
+        >
           <SourceControlIcon className="h-5 w-5" />
         </ActivityIcon>
         <ActivityIcon label="Extensions · Change Color Theme" onClick={cycleTheme}>

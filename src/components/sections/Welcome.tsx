@@ -3,13 +3,21 @@ import { useTypewriter } from '../../hooks/useTypewriter'
 import { useWorkspace } from '../../context/WorkspaceContext'
 import { downloadResume } from '../../utils/downloadResume'
 import { FileWrap } from './shared'
+import { GitHubIcon, LeetCodeIcon, LinkedInIcon, MailIcon } from '../shell/SocialIcons'
+
+const socialLinks = [
+  { label: 'GitHub', href: profile.github, Icon: GitHubIcon },
+  { label: 'LinkedIn', href: profile.linkedin, Icon: LinkedInIcon },
+  { label: 'LeetCode', href: profile.leetcode, Icon: LeetCodeIcon },
+  { label: 'Email', href: `mailto:${profile.email}`, Icon: MailIcon },
+]
 
 const quickLinks: { id: string; label: string }[] = [
-  { id: 'about', label: 'about.md' },
-  { id: 'experience', label: 'experience.json' },
-  { id: 'glofeagles', label: 'projects/' },
+  { id: 'about', label: 'about.html' },
+  { id: 'projects', label: 'projects.js' },
+  { id: 'experience', label: 'experience.ts' },
   { id: 'skills', label: 'skills.json' },
-  { id: 'contact', label: 'contact.tsx' },
+  { id: 'contact', label: 'contact.css' },
 ]
 
 export function Welcome() {
@@ -69,11 +77,24 @@ export function Welcome() {
         </div>
       </div>
 
-      <footer className="mt-16 border-t border-vscode-border pt-6 pb-4 font-mono text-[11px] text-vscode-dim">
-        <p>
-          Designed &amp; built by {profile.name}, styled as a VS Code workspace — React + Vite + Tailwind CSS.
+      <footer className="mt-12 border-t border-vscode-border pt-6 pb-4">
+        <div className="mb-4 flex flex-wrap gap-2">
+          {socialLinks.map(({ label, href, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target={label === 'Email' ? undefined : '_blank'}
+              rel="noreferrer"
+              className="flex items-center gap-1.5 rounded-sm border border-vscode-border px-3 py-1.5 text-xs text-vscode-text hover:border-vscode-blue2/50 hover:text-vscode-blue2"
+            >
+              <Icon className="h-3.5 w-3.5" />
+              {label}
+            </a>
+          ))}
+        </div>
+        <p className="font-mono text-[11px] text-vscode-dim">
+          © {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
-        <p className="mt-1">© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
       </footer>
     </FileWrap>
   )

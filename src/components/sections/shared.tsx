@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 export function FileWrap({ children }: { children: ReactNode }) {
-  return <div className="max-w-3xl px-5 py-8 sm:px-8 sm:py-10">{children}</div>
+  return <div className="max-w-5xl px-5 py-8 sm:px-8 sm:py-10">{children}</div>
 }
 
 export function Comment({ children }: { children: ReactNode }) {
@@ -50,9 +50,12 @@ export function ExternalLink({ href, children }: { href: string; children: React
   )
 }
 
+export const hoverCard =
+  'transition-all duration-300 ease-out hover:-translate-y-1 hover:border-vscode-blue2/50 hover:bg-white/[0.04] hover:shadow-lg hover:shadow-black/30'
+
 export function Card({ children }: { children: ReactNode }) {
   return (
-    <div className="mb-4 rounded-md border border-vscode-border bg-white/[0.02] p-5 transition-colors hover:border-white/20">
+    <div className={`mb-4 rounded-md border border-vscode-border bg-white/[0.02] p-5 ${hoverCard}`}>
       {children}
     </div>
   )

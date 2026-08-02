@@ -40,7 +40,7 @@ export function CommandPalette() {
     const fileEntries: PaletteEntry[] = files.map((f) => ({
       id: `file-${f.id}`,
       label: f.label,
-      hint: f.download ? 'download' : f.group ? `projects/${f.label}` : 'go to file',
+      hint: f.download ? 'download' : 'go to file',
       ext: f.ext,
       run: f.download ? downloadResume : () => openFile(f.id),
     }))

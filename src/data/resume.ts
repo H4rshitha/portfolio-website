@@ -32,6 +32,8 @@ export interface ProjectItem {
   slug: string
   name: string
   period: string
+  emoji: string
+  category: string
   tags: string[]
   description: string
   bullets: string[]
@@ -120,9 +122,11 @@ export const projects: ProjectItem[] = [
     slug: 'glofeagles',
     name: "Glacial Lake Outburst Flood Detection (GLOFeagles'26)",
     period: '2026',
+    emoji: '🏔️',
+    category: 'COMPUTER VISION · SEGMENTATION · CVPR',
     tags: ['U-Net++', 'EfficientNet-B4', 'PyTorch', 'Computer Vision'],
     description:
-      'Dual-task deep learning pipeline for classifying and segmenting glacial lakes from satellite imagery.',
+      "A dual-task pipeline that spots glacial lakes from satellite imagery before they burst and flood a valley downstream — EfficientNet-B4 classifies, U-Net++ segments. Good enough for a Top 5 finish and a trip to present at NCVPRIPG'26 in Jaipur.",
     bullets: [
       'Architected a dual-task pipeline using EfficientNet-B4 for 6-class classification and U-Net++ for semantic segmentation of glacial lakes from satellite imagery.',
       'Achieved 0.6260 Mean IoU, 0.6920 Dice/F1, and 0.7656 Precision on 2,220 image-mask pairs using hybrid Focal + Tversky Loss, mixed precision training (AMP), and Albumentations.',
@@ -134,9 +138,11 @@ export const projects: ProjectItem[] = [
     slug: 'ntire-ripcurrent',
     name: 'NTIRE 2026 Rip Current Detection & Segmentation Challenge',
     period: '2026',
+    emoji: '🌊',
+    category: 'COMPUTER VISION · YOLOV8 · CVPR WORKSHOP',
     tags: ['PyTorch', 'YOLOv8', 'OpenCV', 'CVPR Workshop'],
     description:
-      'YOLOv8-based computer vision pipeline for detecting and localizing rip currents in ocean imagery.',
+      "A YOLOv8 pipeline that spots rip currents in ocean imagery before they pull someone under — segmentation, contour extraction, and test-time augmentation stacked together for a Top 7 finish among 900+ submissions at CVPR's NTIRE 2026 Workshop.",
     bullets: [
       'Designed a YOLOv8-based pipeline for rip current detection using segmentation, contour extraction, morphological operations, and post-processing for accurate localization.',
       'Implemented multi-scale inference and test-time augmentation (TTA), contributing to a Top 7 global ranking among 900+ submissions at the NTIRE CVPR 2026 Workshop Challenge.',
@@ -147,9 +153,11 @@ export const projects: ProjectItem[] = [
     slug: 'finascend',
     name: 'FinAscend: AI-Powered Financial Decision System',
     period: '2026',
+    emoji: '💸',
+    category: 'FULL STACK · FINTECH · EXPLAINABLE AI',
     tags: ['Monte Carlo Simulation', 'Explainable AI', 'OCR'],
     description:
-      'AI-powered financial analytics platform for small businesses, integrating OCR and probabilistic risk forecasting.',
+      "An AI-powered financial analytics platform for small businesses — OCR reads their invoices, Monte Carlo simulations forecast risk, and explainable AI shows exactly why it predicts what it predicts about liquidity and runway. Hackathon finalist at SNUC Hacks'26.",
     bullets: [
       'Developed an AI-powered financial analytics platform integrating OCR and API pipelines to process invoices and financial statements for small businesses.',
       'Implemented Monte Carlo simulations, probabilistic risk forecasting, and Explainable AI techniques to predict liquidity, runway, and bankruptcy risk.',
@@ -161,9 +169,11 @@ export const projects: ProjectItem[] = [
     slug: 'learn-lynx',
     name: 'Learn-Lynx: GenAI-Powered Study Partner',
     period: '2025',
+    emoji: '📖',
+    category: 'GENAI · RAG · FULL STACK',
     tags: ['LangChain', 'RAG', 'Hugging Face', 'Streamlit'],
     description:
-      'Retrieval-Augmented Generation study assistant for semantic search, summarization, and Q&A.',
+      "A Retrieval-Augmented Generation study partner built with LangChain and Hugging Face — semantic search over your notes, real-time summarization, and a Streamlit interface that turns 'I have an exam tomorrow' into an actual study plan.",
     bullets: [
       'Created a RAG study assistant using LangChain, Sentence Transformers, and Hugging Face for semantic search, summarization, and question answering.',
       'Delivered an interactive Streamlit application providing personalized learning plans and real-time AI-assisted study support through vector-based document retrieval.',
@@ -174,9 +184,11 @@ export const projects: ProjectItem[] = [
     slug: 'food-delivery',
     name: 'Food Delivery Web Application',
     period: '2025',
+    emoji: '🛵',
+    category: 'FULL STACK · MERN · E-COMMERCE',
     tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     description:
-      'Full-stack food ordering platform with authentication, cart management, and order processing.',
+      'A full-stack food ordering platform built from scratch — React front end, Node/Express API, MongoDB behind it, JWT auth and role-based access control for customers and admins, deployed live on Vercel and Render.',
     bullets: [
       'Built a full-stack food ordering platform using React.js, Node.js, Express.js, and MongoDB featuring authentication, cart management, and order processing.',
       'Implemented JWT authentication, role-based access control, RESTful APIs, and deployed production-ready applications on Vercel and Render.',

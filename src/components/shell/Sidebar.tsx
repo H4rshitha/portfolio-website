@@ -1,20 +1,19 @@
-import { useState } from 'react'
 import { useWorkspace } from '../../context/WorkspaceContext'
-import { files, fileGroups, type FileExt } from '../../data/files'
+import { files, type FileExt } from '../../data/files'
 import { downloadResume } from '../../utils/downloadResume'
 import { FileIcon } from './FileIcons'
+import { SourceControlPanel } from './SourceControlPanel'
+import { SparkleIcon } from './ActivityIcons'
 
 function FileRow({
   id,
   label,
   ext,
-  indent = false,
   download = false,
 }: {
   id: string
   label: string
   ext: FileExt
-  indent?: boolean
   download?: boolean
 }) {
   const { activeFile, openFile } = useWorkspace()
@@ -22,9 +21,9 @@ function FileRow({
   return (
     <button
       onClick={() => (download ? downloadResume() : openFile(id))}
-      className={`flex w-full items-center gap-1.5 py-1 pr-2 text-left text-[13px] ${
-        indent ? 'pl-8' : 'pl-4'
-      } ${active ? 'bg-vscode-blue/15 text-vscode-bright' : 'text-vscode-text hover:bg-white/5'}`}
+      className={`flex w-full items-center gap-1.5 py-1 pr-2 pl-4 text-left text-[13px] ${
+        active ? 'bg-vscode-blue/15 text-vscode-bright' : 'text-vscode-text hover:bg-white/5'
+      }`}
     >
       <FileIcon ext={ext} />
       <span className="truncate">{label}</span>
@@ -32,43 +31,51 @@ function FileRow({
   )
 }
 
+function CopilotLaunchButton() {
+  const { toggleCopilot } = useWorkspace()
+  return (
+    <div className="no-select shrink-0 border-t border-vscode-border bg-vscode-bg2 p-2">
+      <button
+        onClick={toggleCopilot}
+        className="flex w-full items-center gap-2 rounded-sm border border-vscode-accent/40 bg-vscode-accent/10 px-3 py-2 text-left text-xs font-semibold text-vscode-bright hover:bg-vscode-accent/20"
+      >
+        <SparkleIcon className="h-3.5 w-3.5 shrink-0 text-vscode-accent" />
+        <span className="truncate">Harshitha's Copilot</span>
+        <span className="ml-auto shrink-0 rounded-full bg-white/10 px-1.5 py-0.5 text-[9px] font-bold text-vscode-dim">
+          AI
+        </span>
+      </button>
+    </div>
+  )
+}
+
 export function Sidebar() {
-  const { sidebarOpen, isMobile, toggleSidebar } = useWorkspace()
-  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({ projects: true })
+  const { sidebarOpen, sidebarView, isMobile, toggleSidebar } = useWorkspace()
 
   if (!sidebarOpen) return null
 
-  const rootFiles = files.filter((f) => !f.group)
-  const grouped = (groupId: string) => files.filter((f) => f.group === groupId)
-
   const content = (
-    <div className="flex h-full flex-col bg-vscode-bg2">
-      <div className="no-select flex items-center justify-between px-4 py-2 text-[11px] font-semibold tracking-wide text-vscode-dim">
-        <span>EXPLORER</span>
-      </div>
-      <div className="no-select px-3 pb-1 text-[11px] font-bold uppercase tracking-wide text-vscode-bright">
-        harshitha-palaram-portfolio
-      </div>
-      <div className="flex-1 overflow-y-auto pb-4">
-        {fileGroups.map((group) => (
-          <div key={group.id}>
-            <button
-              onClick={() => setOpenGroups((g) => ({ ...g, [group.id]: !g[group.id] }))}
-              className="flex w-full items-center gap-1.5 py-1 pl-4 text-left text-[13px] text-vscode-text hover:bg-white/5"
-            >
-              <span className={`inline-block transition-transform ${openGroups[group.id] ? 'rotate-90' : ''}`}>
-                ▸
-              </span>
-              <span>📂 {group.label}</span>
-            </button>
-            {openGroups[group.id] &&
-              grouped(group.id).map((f) => <FileRow key={f.id} id={f.id} label={f.label} ext={f.ext} indent />)}
+    <div className="flex h-full flex-col">
+      <div className="min-h-0 flex-1">
+        {sidebarView === 'sourceControl' ? (
+          <SourceControlPanel />
+        ) : (
+          <div className="flex h-full flex-col bg-vscode-bg2">
+            <div className="no-select flex items-center justify-between px-4 py-2 text-[11px] font-semibold tracking-wide text-vscode-dim">
+              <span>EXPLORER</span>
+            </div>
+            <div className="no-select px-3 pb-1 text-[11px] font-bold uppercase tracking-wide text-vscode-bright">
+              harshitha-palaram-portfolio
+            </div>
+            <div className="flex-1 overflow-y-auto pb-4">
+              {files.map((f) => (
+                <FileRow key={f.id} id={f.id} label={f.label} ext={f.ext} download={f.download} />
+              ))}
+            </div>
           </div>
-        ))}
-        {rootFiles.map((f) => (
-          <FileRow key={f.id} id={f.id} label={f.label} ext={f.ext} download={f.download} />
-        ))}
+        )}
       </div>
+      <CopilotLaunchButton />
     </div>
   )
 

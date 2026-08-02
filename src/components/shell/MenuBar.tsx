@@ -49,9 +49,10 @@ export function MenuBar() {
     Go: [
       { label: 'Go to File...', shortcut: 'Ctrl+P', onClick: () => setPaletteOpen(true) },
       { divider: true, label: '' },
-      { label: 'Go to about.md', onClick: () => openFile('about') },
+      { label: 'Go to about.html', onClick: () => openFile('about') },
+      { label: 'Go to projects.js', onClick: () => openFile('projects') },
       { label: 'Go to skills.json', onClick: () => openFile('skills') },
-      { label: 'Go to contact.tsx', onClick: () => openFile('contact') },
+      { label: 'Go to contact.css', onClick: () => openFile('contact') },
     ],
     Run: [
       { label: 'Start Debugging', shortcut: 'F5', onClick: () => setDinoOpen(true) },

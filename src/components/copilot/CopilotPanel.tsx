@@ -43,20 +43,38 @@ export function CopilotPanel() {
 
   if (!copilotOpen) return null
 
-  function send(text?: string) {
+  async function send(text?: string) {
     const q = (text ?? input).trim()
     if (!q || remaining <= 0) return
-    setMessages((m) => [...m, { role: 'user', text: q }])
+    const nextMessages = [...messages, { role: 'user' as const, text: q }]
+    setMessages(nextMessages)
     setInput('')
     setTyping(true)
     const nextCount = usedCount + 1
     setUsedCount(nextCount)
     localStorage.setItem(COUNT_KEY, String(nextCount))
 
-    setTimeout(() => {
-      setMessages((m) => [...m, { role: 'assistant', text: getResponse(q) }])
-      setTyping(false)
-    }, 500 + Math.random() * 400)
+    const firstUserIdx = nextMessages.findIndex((m) => m.role === 'user')
+    const apiMessages = nextMessages
+      .slice(firstUserIdx)
+      .map((m) => ({ role: m.role, content: m.text }))
+
+    let reply: string
+    try {
+      const res = await fetch('/api/copilot', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: apiMessages }),
+      })
+      if (!res.ok) throw new Error(`Copilot API error: ${res.status}`)
+      const data = (await res.json()) as { text: string }
+      reply = data.text
+    } catch {
+      reply = getResponse(q)
+    }
+
+    setMessages((m) => [...m, { role: 'assistant', text: reply }])
+    setTyping(false)
   }
 
   const panelClasses = isMobile
@@ -155,7 +173,7 @@ export function CopilotPanel() {
           </div>
         )}
         <p className="mt-1.5 text-center text-[10px] text-vscode-dim">
-          {remaining} of {limit} messages left · simulated, no data leaves your browser
+          {remaining} of {limit} messages left · powered by Gemini
         </p>
       </div>
     </div>
