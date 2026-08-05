@@ -28,7 +28,7 @@ keyword-matched answers (`src/components/copilot/responseEngine.ts`).
 
 The Copilot panel calls `POST /api/copilot`, a serverless function that
 injects `src/data/resume.ts` into the system prompt and forwards the
-conversation to Gemini (`gemini-flash-latest`). The API key never reaches
+conversation to Gemini (`gemini-flash-lite-latest`). The API key never reaches
 the browser.
 
 1. Get a free API key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey).
