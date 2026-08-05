@@ -242,7 +242,7 @@ export const achievements: AchievementItem[] = [
     period: '2026',
     description:
       'Selected among the Top 5 teams and invited to present the solution at the NCVPRIPG 2026 finale in LNMIIT, Jaipur.',
-    link: 'https://drive.google.com/file/d/1CuydxqpQ9sWZf828fMRX9k9Qe12Y9JFG/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1CuydxqpQ9sWZf828fMRX9k9Qe12Y9JFG/view?usp=drive_link',
     linkLabel: 'Certificate',
   },
   {
